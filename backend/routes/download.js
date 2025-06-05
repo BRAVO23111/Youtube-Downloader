@@ -4,7 +4,7 @@ import ytdl from '@distube/ytdl-core';
 const router = express.Router();
 
 
-router.get('/download   ', async (req, res) => {
+router.get('/download', async (req, res) => {
     const {videoId , itag} = req.query;
     if (!videoId || !itag) {
         return res.status(400).json({ error: 'videoId and itag are required' });
