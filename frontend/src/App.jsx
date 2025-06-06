@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import UrlInput from './components/UrlInput';
-import VideoInfo from './components/VideoInfo';
+import VideoDownloader from './components/VideoDownloader';
 
 function App() {
   const [url, setUrl] = useState('');
@@ -40,7 +40,7 @@ function App() {
       <h1>YouTube Downloader</h1>
       <UrlInput url={url} setUrl={setUrl} onFetch={fetchVideoInfo} loading={loading} />
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <VideoInfo videoInfo={videoInfo} onDownload={handleDownload} />
+      <VideoDownloader videoInfo={videoInfo} onDownload={handleDownload} />
     </div>
   );
 }

@@ -1,8 +1,11 @@
 import React from 'react';
 import FormatTable from './FormatTable';
 
-function VideoInfo({ videoInfo, onDownload }) {
-  if (!videoInfo) return null;
+const VideoDownloader = ({ videoInfo, onDownload }) => {
+  if (!videoInfo) {
+    return null;
+  }
+
   return (
     <div style={{ marginTop: 20 }}>
       <h2>{videoInfo.title}</h2>
@@ -14,6 +17,6 @@ function VideoInfo({ videoInfo, onDownload }) {
       <FormatTable formats={videoInfo.formats} onDownload={onDownload} />
     </div>
   );
-}
+};
 
-export default VideoInfo;
+export default VideoDownloader;
