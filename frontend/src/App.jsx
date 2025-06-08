@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UrlInput from './components/UrlInput';
 import VideoDownloader from './components/VideoDownloader';
+import axios from 'axios';
 
 function App() {
   const [url, setUrl] = useState('');
@@ -13,11 +14,7 @@ function App() {
     setError('');
     setVideoInfo(null);
     try {
-      const res = await fetch('/api/v1/video-info', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url }),
-      });
+      const res = await axios.get(`https://youtube-downloader-2-p47c.onrender.com/api/v1/info?url=${url}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Failed to fetch video info');
       setVideoInfo(data);
@@ -30,7 +27,7 @@ function App() {
 
   const handleDownload = (itag) => {
     if (!videoInfo) return;
-    const downloadUrl = `/api/v1/download?videoId=${videoInfo.videoId}&itag=${itag}`;
+    const downloadUrl = `https://youtube-downloader-2-p47c.onrender.com/api/v1/download?videoId=${videoInfo.videoId}&itag=${itag}`;
     window.open(downloadUrl, '_blank');
   };
 
