@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react() , tailwindcss()],
   server: {
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/api': 'https://youtube-downloader-2-p47c.onrender.com',
     },
   },
 });
