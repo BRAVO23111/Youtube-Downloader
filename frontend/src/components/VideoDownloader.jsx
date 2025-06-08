@@ -7,13 +7,15 @@ const VideoDownloader = ({ videoInfo, onDownload }) => {
   }
 
   return (
-    <div style={{ marginTop: 20 }}>
-      <h2>{videoInfo.title}</h2>
-      <img src={videoInfo.thumbnailUrl} alt="thumbnail" style={{ maxWidth: 320 }} />
-      <p>Channel: {videoInfo.channelName}</p>
-      <p>Duration: {videoInfo.duration} seconds</p>
-      <p>Views: {videoInfo.viewCount}</p>
-      <h3>Available Formats</h3>
+    <div className="mt-10 flex flex-col items-center">
+      <h2 className="text-xl font-semibold mb-2 text-gray-800">{videoInfo.title}</h2>
+      <img src={videoInfo.thumbnailUrl} alt="thumbnail" className="rounded-lg shadow mb-4 max-w-xs" />
+      <div className="flex flex-wrap justify-center gap-4 mb-4 text-gray-700">
+        <span><span className="font-medium">Channel:</span> {videoInfo.channelName}</span>
+        <span><span className="font-medium">Duration:</span> {videoInfo.duration} seconds</span>
+        <span><span className="font-medium">Views:</span> {videoInfo.viewCount}</span>
+      </div>
+      <h3 className="text-lg font-semibold mb-2">Available Formats</h3>
       <FormatTable formats={videoInfo.formats} onDownload={onDownload} />
     </div>
   );

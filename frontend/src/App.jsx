@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import UrlInput from './components/UrlInput';
 import VideoDownloader from './components/VideoDownloader';
 
@@ -36,11 +35,13 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>YouTube Downloader</h1>
-      <UrlInput url={url} setUrl={setUrl} onFetch={fetchVideoInfo} loading={loading} />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <VideoDownloader videoInfo={videoInfo} onDownload={handleDownload} />
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 px-2">
+      <div className="w-full max-w-xl bg-white rounded-lg shadow-lg p-8">
+        <h1 className="text-3xl font-bold mb-8 text-center text-blue-600">YouTube Downloader</h1>
+        <UrlInput url={url} setUrl={setUrl} onFetch={fetchVideoInfo} loading={loading} />
+        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+        <VideoDownloader videoInfo={videoInfo} onDownload={handleDownload} />
+      </div>
     </div>
   );
 }
